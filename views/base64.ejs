@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script>
+</head>
+<body>
+    <div class="ui center aligned container">
+        <h1 class="ui dividing header">base64 编解码</h1>
+        <h3>源文本</h3>
+        <textarea name="srcText" id="srcText" cols="60" rows="6"></textarea>
+        <div style="height: 20px;"></div>
+        <div class="ui container">
+            <button class="ui red button encode">编码</button>
+            <a class="icon item exchange">
+                <i class="exchange icon"></i>
+            </a>
+            <button class="ui green button decode">解码</button>
+        </div>
+        <h3>目标文本</h3>
+        <textarea name="dstText" id="dstText" cols="60" rows="6"></textarea>
+    </div>
+
+    <script type="text/javascript">
+        function trans_base64(isEncode) {
+          var srcText = $('#srcText').val();
+          if (srcText.length === 0) {
+            return;
+          }
+
+          var url = isEncode ? '/api/encode_base64' : '/api/decode_base64';
+          $.ajax({
+            url: url,
+            type: 'POST',
+            async: true,
+            data: {
+              text: srcText,
+            },
+            timeout: 5000,
+            dataType: 'json',
+            beforeSend: function(val) {
+              console.log('before');
+            },
+            success: function(res, status, xhr) {
+              if (res.success === 1) {
+                $('#dstText').val(res.text);
+              }
+            },
+            error: function(xhr, status) {
+              console.log('error');
+              console.log(xhr);
+              console.log(status);
+            },
+            complete: function() {
+              console.log('end')
+            }
+          })
+        }
+
+        $('.encode').on('click', function() {
+            trans_base64(true);
+        })
+
+        $('.decode').on('click', function() {
+            trans_base64(false);
+        })
+
+        $('a.exchange').on('click', function() {
+            var srcText = $('#srcText').val();
+            $('#srcText').val($('#dstText').val());
+            $('#dstText').val(srcText);
+        })
+    </script>
+</body>
+</html>
