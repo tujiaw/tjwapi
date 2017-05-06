@@ -1,14 +1,82 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>工具列表</h1>
-    <hr>
-    <ul>
-      <li><a href="/base64">base64编解码</a></li>
-    </ul>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>泊客网 - 上传图片</title>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a1795bf1081e2705f39309367463677e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+        <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://sanjiadian.net">泊客网</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="http://sanjiadian.net">主页</a></li>
+            <li><a href="http://sanjiadian.net/archives">归档</a></li>
+            <li><a href="http://sanjiadian.net/about">关于</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">相关链接 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://sanjiadian.net/wchathot.html">微信文章精选</a></li>
+                <li><a href="http://blog.csdn.net/tujiaw">CSDN Blog</a></li>
+                <li><a href="https://github.com/tujiaw">GitHub</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">工具</li>
+                <li><a href="http://123.57.244.170:3100/base64">base64编解码</a></li>
+                <li><a href="http://sanjiadian.net/upload.html">上传图片</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class="container">
+        <br><br><br>
+
+        <div class="row">
+          <ul id="types" class="nav nav-tabs">
+            <li class="active"><a href="/base64">BASE64编解码</a></li>
+            <li><a href="/base64img">BASE64图片</a></li>
+          </ul>
+        </div>
+        <div class="row">
+          <iframe id="content-frame" src="/base64" scrolling="no"></iframe>
+        </div>
+        <footer class="footer navbar-fixed-bottom">
+            <a href="http://www.miitbeian.gov.cn/" target="_blank"><img src="/img/beian_gov_cn.png" style="vertical-align:middle;margin-right:5px;">鄂ICP备17003086号. Copyright © 2016. All Rights Reserved. </a> 
+        </footer>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>
+    <script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
 </html>
